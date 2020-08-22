@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Viruses Information</title>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./carousel_fade.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular/angular.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript" src="./js/shuffle.js"></script>
+    <script type="text/javascript" src="./js/scrollpage.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="./js/map.js"></script>
+    <script type="text/javascript" src="./js/fixednavbar.js"></script>
+    <script type="text/javascript" src="./js/validationform.js"></script>
+    <script type="text/javascript">
+        $(this).dialog('destroy').remove();
+    </script>
+</head>
+
+<body data-spy="scroll" id="page-top" data-target=".navbar" data-offset="50" onload="document.getElementById('defaultOpen').click();">
+
+
+    <!-- Begin section Contact Us -->
+    <section id="contact">
+        <div class="container-fluid">
+            <div class="row" id="tilte-contact">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">More detail please contact us.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" ng-app="validationApp" ng-controller="mainController">
+                    <form id="contactForm" name="sentMessage" ng-submit="submitForm(sentMessage.$valid)" novalidate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="name" id="name" type="text" placeholder="Your Name *" ng-model="name" onclick='this.value = ""' required>
+                                    <span class="text-danger" ng-show="sentMessage.name.$touched && sentMessage.name.$invalid">
+                                        Please enter your Name.
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" ng-model="email" onclick='this.value = ""' required>
+                                    <span class="text-danger" ng-show="sentMessage.email.$touched && sentMessage.email.$invalid">
+                                        Please enter your Email.
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="phone" id="phone" type="tel" placeholder="Your Phone Number *" ng-model="phone" onclick='this.value = ""' required>
+                                    <span class="text-danger" ng-show="sentMessage.phone.$touched && sentMessage.phone.$invalid">
+                                        Please enter your Phone Number.
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" id="message" placeholder="Your Message *" ng-model="message" onclick='this.value = ""' required></textarea>
+                                    <span class="text-danger" ng-show="sentMessage.message.$touched && sentMessage.message.$invalid">
+                                        Please enter your Message.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <button id="sendMessageButton" type="submit" class="btn btn-primary btn-xl text-uppercase" ng-disabled=" 
+                                sentMessage.email.$touched && sentMessage.email.$invalid ||  
+                                sentMessage.name.$touched && sentMessage.name.$invalid || 
+                                sentMessage.phone.$touched && sentMessage.phone.$invalid || 
+                                sentMessage.message.$touched && sentMessage.message.$invalid">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-12 col-xs-12">
+                    <div class="my-location">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End section Contact Us -->
+    
+</body>
+
+</html>
